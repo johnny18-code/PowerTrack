@@ -1,57 +1,78 @@
-// Track Gym progress -- umay sa may bayad na apps
+// Track Gym progress
 // Program Start
 
+// ── Helper ──
+function createLogEntry(parentId, sets, reps) {
+    var logList = document.getElementById(parentId);
 
+    var entry = document.createElement("div");
+    entry.classList.add("log-entry");
 
+    var input = document.createElement("input");
+    input.type = "text";
+    input.readOnly = true;
+    input.value = "Sets " + sets + "  ×  " + reps + " reps";
 
-// Global variables
+    input.addEventListener("click", function () {
+        input.readOnly = false;
+    });
 
+    // var saveBtn = document.createElement("button");
+    // saveBtn.classList.add("save-btn");
+    // saveBtn.textContent = "Save";
+    // saveBtn.addEventListener("click", function () {
+        // input.readOnly = true;
+    // });
 
-// get DOMS
-// Boxes - Workout
-var pushDayDivParent = document.getElementById("push-day");
-var getRepetitions = document.getElementById("repetitions");
-var getSets = document.getElementById("sets"); 
+    var del = document.createElement("button");
+    del.classList.add("delete-btn");
+    del.textContent = "Delete";
+    del.addEventListener("click", function () {
+        entry.remove();
+    });
 
-var count = 0;
+    entry.appendChild(input);
+    // entry.appendChild(saveBtn);
+    entry.appendChild(del);
+    logList.appendChild(entry);
+}
 
-var pushDayButton = document.getElementById("push-button");
-pushDayButton.addEventListener("click", () => {
-  count += 1;
-  let inputBoxType = document.createElement("input");
-  inputBoxType.classList.add("inputBoxType-stlye");
-  inputBoxType.type = "text";
-  // inputBoxType.disabled = true;
-  inputBoxType.readOnly = true;
-  inputBoxType.placeholder = `Sets ${getSets.value} :: Repetitions ${getRepetitions.value} `;
-  // inputBoxType.innerHTML = `Sets ${getSets.value} :: Repetitions ${getRepetitions.value} `;
-  
-  
-  
+// ── Push ──
+var pushButton = document.getElementById("push-button");
+pushButton.addEventListener("click", function () {
+    var sets = document.getElementById("sets").value;
+    var reps = document.getElementById("repetitions").value;
+    createLogEntry("push-log", sets, reps);
+});
 
+// ── Pull ──
+var pullButton = document.getElementById("pull-button");
+pullButton.addEventListener("click", function () {
+    var sets = document.getElementById("pull-sets").value;
+    var reps = document.getElementById("pull-reps").value;
+    createLogEntry("pull-log", sets, reps);
+});
 
-  pushDayDivParent.appendChild(inputBoxType);
+// ── Legs ──
+var legsButton = document.getElementById("legs-button");
+legsButton.addEventListener("click", function () {
+    var sets = document.getElementById("legs-sets").value;
+    var reps = document.getElementById("legs-reps").value;
+    createLogEntry("legs-log", sets, reps);
+});
 
-  
-  inputBoxType.addEventListener("click", () => {
-    console.log("clicked");
-    inputBoxType.readOnly = false;
-    // let deleteBox = delete box?
-    let deleteBox = document.createElement("span");
-    deleteBox.textContent = "X";
-    inputBoxType.after(deleteBox);
+// ── Cardio ──
+var cardioButton = document.getElementById("cardio-button");
+cardioButton.addEventListener("click", function () {
+    var sets = document.getElementById("cardio-sets").value;
+    var reps = document.getElementById("cardio-reps").value;
+    createLogEntry("cardio-log", sets, reps);
+});
 
-    deleteBox.addEventListener("click", () => {
-      inputBoxType.remove();
-      deleteBox.remove();
-    })
-  })
-
-  
-
- 
- 
- 
-
-})
-
+// ── Abs ──
+var absButton = document.getElementById("abs-button");
+absButton.addEventListener("click", function () {
+    var sets = document.getElementById("abs-sets").value;
+    var reps = document.getElementById("abs-reps").value;
+    createLogEntry("abs-log", sets, reps);
+});

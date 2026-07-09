@@ -4,60 +4,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Power App</title>
+    <title>PowerTrack</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="script/script.js" defer></script>
 </head>
 
 <body>
-    <h1>Track Gym Progress</h1>
-    <!-- 3 Divs? Core? -->
-    <!-- Push Pull Legs? -->
-    <nav class="navigation bar">
+    <header>
+        <h1>PowerTrack</h1>
+        <p class="subtitle">Log your gym progress</p>
+    </header>
 
+    <nav class="navigation-bar">
+        <span>Push</span>
+        <span>Pull</span>
+        <span>Legs</span>
+        <span>Cardio</span>
+        <span>Abs</span>
     </nav>
 
     <section class="main-section">
-        <!-- Each container will have buttons? -->
-        <!-- or just one input filed with selection and then when a button hits -->
-        <!-- it will append/log what you worked out? -->
-        <div class="container">Push Day!
-            <div class="boxes push-day" id="push-day">
-                <label class="sets" for="sets">Sets</label>
-                <select name="sets" id="sets">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="1">1</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
 
-                <label for="reps" for="reps">Repetitions</label>
-                <select name="repetitions" id="repetitions">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                </select>
-
-                <input type="button" value="PUSH" id="push-button">
-
-
+        <!-- Push Day -->
+        <div class="container push-card">
+            <div class="container-title">Push Day</div>
+            <div class="boxes" id="push-day">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="sets">Sets</label>
+                        <select name="sets" id="sets">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="repetitions">Reps</label>
+                        <select name="repetitions" id="repetitions">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                    </div>
+                    <input type="button" value="LOG" id="push-button" class="log-btn">
+                </div>
+                <div class="log-list" id="push-log"></div>
             </div>
         </div>
-        <div class="container">Pull</div>
-        <div class="container">Legs</div>
-        <div class="container">Cardio</div>
-        <div class="container">Abdominal Workout</div>
+
+        <!-- Pull Day -->
+        <div class="container pull-card">
+            <div class="container-title">Pull Day</div>
+            <div class="boxes" id="pull-day">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="pull-sets">Sets</label>
+                        <select name="pull-sets" id="pull-sets">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pull-reps">Reps</label>
+                        <select name="pull-reps" id="pull-reps">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                    </div>
+                    <input type="button" value="LOG" id="pull-button" class="log-btn">
+                </div>
+                <div class="log-list" id="pull-log"></div>
+            </div>
+        </div>
+
+        <!-- Legs Day -->
+        <div class="container legs-card">
+            <div class="container-title">Legs Day</div>
+            <div class="boxes" id="legs-day">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="legs-sets">Sets</label>
+                        <select name="legs-sets" id="legs-sets">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="legs-reps">Reps</label>
+                        <select name="legs-reps" id="legs-reps">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                    </div>
+                    <input type="button" value="LOG" id="legs-button" class="log-btn">
+                </div>
+                <div class="log-list" id="legs-log"></div>
+            </div>
+        </div>
+
+        <!-- Cardio -->
+        <div class="container cardio-card">
+            <div class="container-title">Cardio</div>
+            <div class="boxes" id="cardio-day">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cardio-sets">Sets</label>
+                        <select name="cardio-sets" id="cardio-sets">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="cardio-reps">Reps</label>
+                        <select name="cardio-reps" id="cardio-reps">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                    </div>
+                    <input type="button" value="LOG" id="cardio-button" class="log-btn">
+                </div>
+                <div class="log-list" id="cardio-log"></div>
+            </div>
+        </div>
+
+        <!-- Abdominal Workout -->
+        <div class="container abs-card">
+            <div class="container-title">Abs</div>
+            <div class="boxes" id="abs-day">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="abs-sets">Sets</label>
+                        <select name="abs-sets" id="abs-sets">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="abs-reps">Reps</label>
+                        <select name="abs-reps" id="abs-reps">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                    </div>
+                    <input type="button" value="LOG" id="abs-button" class="log-btn">
+                </div>
+                <div class="log-list" id="abs-log"></div>
+            </div>
+        </div>
+
     </section>
 
 </body>

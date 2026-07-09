@@ -1,12 +1,227 @@
+/* ── Reset ── */
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
+/* ── Base ── */
+body {
+    background-color: #1a1a2e;
+    color: #d0d0e0;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* ── Header ── */
+header {
+    text-align: center;
+    padding: 40px 20px 16px;
+    border-bottom: 1px solid #2a2a4a;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+
+.subtitle {
+    margin-top: 4px;
+    font-size: 0.85rem;
+    color: #7070a0;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* ── Nav ── */
+.navigation-bar {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    padding: 14px 20px;
+    border-bottom: 1px solid #2a2a4a;
+}
+
+.navigation-bar span {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8080b0;
+    cursor: default;
+}
+
+/* ── Grid ── */
+.main-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 36px 28px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ── Card base ── */
 .container {
-    border: 1px solid blue;
-    height: 200px;
-    width: 200px;
+    background-color: #22223a;
+    border: 1px solid #2e2e50;
+    border-radius: 10px;
+    overflow: hidden;
+    border-top-width: 3px;
 }
 
+/* ── Card accent colors (top border + title) ── */
+.push-card   { border-top-color: #e06c75; }
+.pull-card   { border-top-color: #61afef; }
+.legs-card   { border-top-color: #c678dd; }
+.cardio-card { border-top-color: #e5c07b; }
+.abs-card    { border-top-color: #56b6c2; }
 
+.push-card   .container-title { color: #e06c75; }
+.pull-card   .container-title { color: #61afef; }
+.legs-card   .container-title { color: #c678dd; }
+.cardio-card .container-title { color: #e5c07b; }
+.abs-card    .container-title { color: #56b6c2; }
+
+.container-title {
+    padding: 14px 16px 10px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    border-bottom: 1px solid #2e2e50;
+}
+
+/* ── Form inside card ── */
+.boxes {
+    padding: 16px;
+}
+
+.form-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #7070a0;
+}
+
+.form-group select {
+    background-color: #1a1a2e;
+    color: #d0d0e0;
+    border: 1px solid #3a3a60;
+    border-radius: 4px;
+    padding: 6px 8px;
+    font-size: 0.85rem;
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+    width: 64px;
+}
+
+.form-group select:focus {
+    border-color: #5a5a90;
+}
+
+/* ── Log button ── */
+.log-btn {
+    background-color: #2e2e50;
+    color: #c0c0e0;
+    border: 1px solid #3a3a60;
+    border-radius: 4px;
+    padding: 7px 14px;
+    font-size: 0.7rem;
+    font-family: inherit;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-bottom: 1px;
+}
+
+.log-btn:hover {
+    background-color: #3a3a66;
+    color: #ffffff;
+    border-color: #5a5a90;
+}
+
+/* ── Logged entries ── */
+.log-list {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.log-entry {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.log-entry input[type="text"] {
+    flex: 1;
+    background-color: #1a1a2e;
+    color: #c0c0e0;
+    border: 1px solid #2e2e50;
+    border-radius: 4px;
+    padding: 5px 8px;
+    font-size: 0.8rem;
+    font-family: inherit;
+    outline: none;
+    min-width: 0;
+}
+
+.log-entry input[type="text"]:focus {
+    border-color: #5a5a90;
+}
+
+/* ── Save / Delete buttons ── */
+.save-btn,
+.delete-btn {
+    background: none;
+    border: 1px solid;
+    border-radius: 4px;
+    font-size: 0.68rem;
+    font-family: inherit;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    cursor: pointer;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.save-btn {
+    color: #56b6c2;
+    border-color: #2a5060;
+}
+
+.save-btn:hover {
+    color: #88d8e0;
+    border-color: #3a7080;
+}
+
+.delete-btn {
+    color: #6060a0;
+    border-color: #3a3a60;
+}
+
+.delete-btn:hover {
+    color: #e06c75;
+    border-color: #703040;
+}
