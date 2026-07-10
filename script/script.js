@@ -1,8 +1,17 @@
 // Track Gym progress
 // Program Start
 
+// deguzj - 2026 - 07 - 10 
+// change the cardio entry to km run 
+
+
+
+
+
 // ── Helper ──
 function createLogEntry(parentId, sets, reps) {
+    
+
     var logList = document.getElementById(parentId);
 
     var entry = document.createElement("div");
@@ -11,7 +20,12 @@ function createLogEntry(parentId, sets, reps) {
     var input = document.createElement("input");
     input.type = "text";
     input.readOnly = true;
-    input.value = "Sets " + sets + "  ×  " + reps + " reps";
+    if (parentId == 'cardio-log') { 
+        input.value = "Hour ran " + sets + "  -  " + reps + " Distance";
+    } else { 
+        input.value = "Sets " + sets + "  ×  " + reps + " reps";
+    }
+    
 
     input.addEventListener("click", function () {
         input.readOnly = false;
@@ -76,3 +90,13 @@ absButton.addEventListener("click", function () {
     var reps = document.getElementById("abs-reps").value;
     createLogEntry("abs-log", sets, reps);
 });
+
+
+// 
+
+
+
+
+
+
+

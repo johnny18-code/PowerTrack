@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #1a1a2e;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-size: 13px;
+    color: #d0d0e0;
+    padding: 40px 24px 60px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 1rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .meta {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #5050a0;
+    margin-bottom: 40px;
+    letter-spacing: 0.06em;
+  }
+
+  .diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    position: relative;
+    width: 100%;
+  }
+
+  .connector-block {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .node {
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-align: center;
+    border: 1px solid;
+    min-width: 130px;
+  }
+
+  .node-entry {
+    background: #0e0e1e;
+    border-color: #4a4a80;
+    color: #9090d0;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .node-push   { background: #2a1820; border-color: #e06c75; color: #e06c75; }
+  .node-pull   { background: #182028; border-color: #61afef; color: #61afef; }
+  .node-legs   { background: #201828; border-color: #c678dd; color: #c678dd; }
+  .node-cardio { background: #28221a; border-color: #e5c07b; color: #e5c07b; }
+  .node-abs    { background: #182028; border-color: #56b6c2; color: #56b6c2; }
+
+  .node-helper {
+    background: #1e2840;
+    border-color: #5090e0;
+    color: #80b8f0;
+    font-size: 0.85rem;
+    min-width: 220px;
+    padding: 14px 20px;
+  }
+
+  .node-label {
+    font-size: 0.65rem;
+    color: #5050a0;
+    margin-top: 4px;
+    text-align: center;
+    letter-spacing: 0.06em;
+  }
+
+  .node-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .node-dom {
+    background: #181828;
+    border-color: #3a3a60;
+    color: #8080b0;
+    font-size: 0.72rem;
+    font-weight: 400;
+    min-width: 150px;
+  }
+  .node-dom-special {
+    background: #1e2218;
+    border-color: #4a6040;
+    color: #80a870;
+    font-size: 0.72rem;
+    font-weight: 400;
+    min-width: 150px;
+  }
+
+  svg.lines { overflow: visible; display: block; }
+  .line        { stroke: #3a3a60; stroke-width: 1.5; fill: none; }
+  .line-push   { stroke: #e06c7566; }
+  .line-pull   { stroke: #61afef66; }
+  .line-legs   { stroke: #c678dd66; }
+  .line-cardio { stroke: #e5c07b66; }
+  .line-abs    { stroke: #56b6c266; }
+  .line-helper { stroke: #5090e066; }
+  .arrow        { fill: #3a3a60; }
+  .arrow-helper { fill: #5090e066; }
+
+  .node-cond {
+    background: #1a1e30;
+    border: 1px dashed #4a5080;
+    border-radius: 6px;
+    color: #7080b0;
+    font-size: 0.7rem;
+    padding: 8px 14px;
+    min-width: 200px;
+    text-align: center;
+    font-style: italic;
+  }
+
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #3a3a70;
+    margin: 6px 0 2px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .spacer    { height: 8px; }
+  .spacer-lg { height: 16px; }
+
+  footer {
+    text-align: center;
+    margin-top: 48px;
+    font-size: 12px;
+    color: #2a2a50;
+    border-top: 1px solid #2a2a4a;
+    padding-top: 16px;
+  }
+</style>
+</head>
+<body>
+
+<h1>script.js — Function Trajectory</h1>
+<p class="meta">PowerTrack · Event flow &amp; DOM mutation map</p>
+
+<div class="diagram">
+
+  <!-- LAYER 0: Page load -->
+  <div class="row">
+    <div class="node-wrap">
+      <div class="node node-entry">Page Load / DOM Ready</div>
+      <div class="node-label">script deferred — runs after HTML parsed</div>
+    </div>
+  </div>
+
+  <div class="connector-block">
+    <svg class="lines" width="2" height="32"><line class="line" x1="1" y1="0" x2="1" y2="28"/><polygon class="arrow" points="1,32 -3,22 5,22"/></svg>
+  </div>
+
+  <!-- LAYER 1: Button listeners -->
+  <div class="section-label">getElementById → addEventListener("click")</div>
+  <div class="spacer"></div>
+  <div class="row">
+    <div class="node-wrap">
+      <div class="node node-push">pushButton</div>
+      <div class="node-label">#push-button</div>
+    </div>
+    <div class="node-wrap">
+      <div class="node node-pull">pullButton</div>
+      <div class="node-label">#pull-button</div>
+    </div>
+    <div class="node-wrap">
+      <div class="node node-legs">legsButton</div>
+      <div class="node-label">#legs-button</div>
+    </div>
+    <div class="node-wrap">
+      <div class="node node-cardio">cardioButton</div>
+      <div class="node-label">#cardio-button</div>
+    </div>
+    <div class="node-wrap">
+      <div class="node node-abs">absButton</div>
+      <div class="node-label">#abs-button</div>
+    </div>
+  </div>
+
+  <!-- Converging arrows -->
+  <div class="connector-block" style="height:48px; position:relative;">
+    <svg class="lines" width="700" height="48" viewBox="0 0 700 48">
+      <line class="line line-push"   x1="70"  y1="0" x2="350" y2="44"/>
+      <line class="line line-pull"   x1="210" y1="0" x2="350" y2="44"/>
+      <line class="line line-legs"   x1="350" y1="0" x2="350" y2="44"/>
+      <line class="line line-cardio" x1="490" y1="0" x2="350" y2="44"/>
+      <line class="line line-abs"    x1="630" y1="0" x2="350" y2="44"/>
+      <polygon class="arrow-helper" points="350,48 346,38 354,38"/>
+    </svg>
+  </div>
+
+  <!-- LAYER 2: Helper -->
+  <div class="section-label">on user click — reads DOM values</div>
+  <div class="spacer"></div>
+  <div class="row">
+    <div class="node-wrap">
+      <div class="node node-helper">createLogEntry(parentId, sets, reps)</div>
+      <div class="node-label">shared helper function</div>
+    </div>
+  </div>
+
+  <div class="connector-block">
+    <svg class="lines" width="2" height="32"><line class="line line-helper" x1="1" y1="0" x2="1" y2="28"/><polygon class="arrow-helper" points="1,32 -3,22 5,22"/></svg>
+  </div>
+
+  <!-- LAYER 3: Branch condition -->
+  <div class="row">
+    <div class="node-cond">if (parentId === "cardio-log")<br>→ "Hour ran X — Y Distance"<br>else → "Sets X × Y reps"</div>
+  </div>
+
+  <!-- Fan-out arrows -->
+  <div class="connector-block" style="height:40px; position:relative;">
+    <svg class="lines" width="600" height="40" viewBox="0 0 600 40">
+      <line class="line line-helper" x1="300" y1="0" x2="80"  y2="36"/>
+      <line class="line line-helper" x1="300" y1="0" x2="200" y2="36"/>
+      <line class="line line-helper" x1="300" y1="0" x2="300" y2="36"/>
+      <line class="line line-helper" x1="300" y1="0" x2="400" y2="36"/>
+      <line class="line line-helper" x1="300" y1="0" x2="520" y2="36"/>
+    </svg>
+  </div>
+
+  <!-- LAYER 4: DOM mutations -->
+  <div class="section-label">DOM mutations</div>
+  <div class="spacer"></div>
+  <div class="row">
+    <div class="node-wrap">
+      <div class="node node-dom">createElement("div")<br>.log-entry</div>
+      <div class="node-label">wrapper row</div>
+    </div>
+    <div class="node-wrap">
+      <div class="node node-dom">createElement("input")<br>type="text" readOnly</div>
+      <div class="node-label">log text field</div>
+    </div>
+    <div class="node-wrap">
+      <div class="node node-dom-special">input.value<br>set by condition</div>
+      <div class="node-label">cardio vs. other</div>
+    </div>
+    <div class="node-wrap">
+      <div class="node node-dom">createElement("button")<br>.delete-btn</div>
+      <div class="node-label">removes entry on click</div>
+    </div>
+    <div class="node-wrap">
+      <div class="node node-dom">logList.appendChild(entry)</div>
+      <div class="node-label">appended to #[id]-log</div>
+    </div>
+  </div>
+
+  <!-- Arrows to nested listeners -->
+  <div class="connector-block" style="height:32px">
+    <svg class="lines" width="500" height="32" viewBox="0 0 500 32">
+      <line class="line line-helper" x1="165" y1="0" x2="165" y2="28"/>
+      <line class="line line-helper" x1="330" y1="0" x2="330" y2="28"/>
+      <polygon class="arrow" points="165,32 161,22 169,22"/>
+      <polygon class="arrow" points="330,32 326,22 334,22"/>
+    </svg>
+  </div>
+
+  <!-- LAYER 5: Nested listeners -->
+  <div class="row">
+    <div class="node-wrap">
+      <div class="node node-dom" style="min-width:180px">input.addEventListener("click")<br>→ readOnly = false</div>
+      <div class="node-label">click to edit entry</div>
+    </div>
+    <div class="node-wrap">
+      <div class="node node-dom" style="min-width:180px">del.addEventListener("click")<br>→ entry.remove()</div>
+      <div class="node-label">click to delete row</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>Made with IBM Bob</footer>
+</body>
+</html>
